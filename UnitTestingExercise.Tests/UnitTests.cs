@@ -8,7 +8,10 @@ namespace UnitTestingExercise.Tests
     {
         // Step 3: Add a test for the Add method
         [Theory]
-        [InlineData(2, 3, 5, 10)] // Add test data
+        [InlineData(2, 3, 5, 10)]
+        [InlineData(1, 1, 1, 3)]
+        [InlineData(0, 0, 0 , 0)]
+        [InlineData(-1,-1,-1,-3)]
         public void AddTest(int num1, int num2, int num3, int expected)
         {
             // Arrange
@@ -27,14 +30,17 @@ namespace UnitTestingExercise.Tests
 
         // Step 5: Add a test for the Subtract method
         [Theory]
-        [InlineData(10, 3, 7)] // Add test data (minuend: 10, subtrahend: 3, expected result: 7)
-        public void SubtractTest(int minuend, int subtrahend, int expected)
+        [InlineData(10, 3, 7)]
+        [InlineData(4, 3, 1)]
+        [InlineData(0, 0, 0)]
+        [InlineData(-5, -5, 0)]
+        public void SubtractTest(int num1, int num2, int expected)
         {
             // Arrange
             Calculator calculator = new Calculator();
 
             // Act
-            int actual = calculator.Subtract(minuend, subtrahend);
+            int actual = calculator.Subtract(num1, num2);
 
             // Assert
             Assert.Equal(expected, actual); // Assert that the actual result matches the expected result
@@ -42,11 +48,11 @@ namespace UnitTestingExercise.Tests
 
         // Step 7: Add a test for the Multiply method
         [Theory]
-        [InlineData(2, 3, 6)]   // Multiply 2 * 3, expected result: 6
-        [InlineData(4, 5, 20)]  // Multiply 4 * 5, expected result: 20
-        [InlineData(0, 5, 0)]   // Multiply 0 * 5, expected result: 0
-        [InlineData(-2, 3, -6)] // Multiply -2 * 3, expected result: -6
-        [InlineData(7, 7, 49)]  // Multiply 7 * 7, expected result: 49
+        [InlineData(2, 3, 6)]
+        [InlineData(4, 5, 20)]
+        [InlineData(0, 5, 0)]
+        [InlineData(-2, 3, -6)]
+        [InlineData(7, 7, 49)]
         public void MultiplyTest(int num1, int num2, int expected)
         {
             // Arrange
